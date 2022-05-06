@@ -8,7 +8,7 @@ https://download.cnet.com/s/developers 1489 Developers
 https://download.cnet.com/s/drivers 5572 Drivers
 https://download.cnet.com/s/education 974 Education
 https://download.cnet.com/s/games 2080 Games
-https://download.cnet.com/s/home302 Home
+https://download.cnet.com/s/home 302 Home
 https://download.cnet.com/s/security 663 Security
 https://download.cnet.com/s/utilities 1600 Utilities
 

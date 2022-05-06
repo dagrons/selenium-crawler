@@ -23,3 +23,8 @@ $ python crawler.py target-folder/
 ## NOTES
 The page ranges in "urllist.txt" were retrieved manually.
 In the future it should be automated.
+
+
+## XPath 
+
+实际上，在浏览器中打开对应页面，然后inspect，右键点击一个html元素，Copy > Copy XPath，就能直接生成对应元素的XPath了
