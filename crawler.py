@@ -53,7 +53,6 @@ def mycrawler(urllist, folder):
     driver.close()
     driver.switch_to_window(handles[0])
 
-    itemXpath = "//a[@class='item-anchor']"
 
     # For each page
     for i in range(0,len(urllist)):
@@ -64,24 +63,20 @@ def mycrawler(urllist, folder):
         for j in range(0,10):
             sys.stdout.write('   item {0}: '.format(j))
             start = time.time()
+            
+            # itemXpath = "//div[@section='search|1']//a[" + str(j) +"]"            
+            itemXpath = "//a[@class='c-productCard_link']"            
+            try:                
+                items = WebDriverWait(driver,100).until(lambda driver: driver.find_elements_by_xpath(itemXpath))
+                link = items[j].get_attribute('href')                
+                driver.get(link)
+                print(link)
+                WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_xpath("//div[@section='download_btn']")).click()  
+                WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_xpath("//a[@class='c-pageProductPdl-link']")).click()
+                # if dlmsg.text == 'Visit': # external link 
+                #     continue
+                # WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_xpath("//div[@class='c-productSummary']//div[@section='download_btn']")).click()
 
-            try:
-                items = WebDriverWait(driver,10).until(lambda driver: driver.find_elements_by_xpath(itemXpath))
-                link = items[j].get_attribute('href')
-                spanXpath = "//a[@class='item-anchor'][" + str(j+1) + "]/div/div/div/span"
-
-                # The number of span elements to identify whether it is an
-                # external file, which crashes this crawler-Reason unknown yet
-                no_span = WebDriverWait(driver,10).until(lambda driver: driver.find_elements_by_xpath(spanXpath))
-
-                if len(no_span) != 4:
-                    driver.get(link)
-                    dlmsg = WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_xpath("//span[@id='button-dlm-sub-message-info']"))
-                    if dlmsg.text == 'External Download Site':
-                        continue
-                    WebDriverWait(driver,10).until(lambda driver: driver.find_element_by_xpath("//a[@class='dln-a']")).click()
-                else:
-                    pass
 
             except TimeoutException:
                 print '    There was a timeout during url: {0} at element {1}'.format(urllist[i], j)
