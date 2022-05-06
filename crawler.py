@@ -139,7 +139,7 @@ def _main():
 
             # For each page of the URL
             for i in range(2,int(end)+1):
-                urllist.append(url + '?page=' + str(i))
+                urllist.append(url + '/' + str(i) + '/?platform=windows')
 
             # Run the crawler
             mycrawler(urllist,target)
