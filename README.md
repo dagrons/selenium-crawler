@@ -13,6 +13,7 @@ A webcrawler implemented using selenium and Google Chrome
   * Install crx(AdBlocker Plus): https://crx-downloader.com/ 
   ```shell
   pip instal requirements.txt
+  apt install xvfb
   ```   
 
 ## Usage
