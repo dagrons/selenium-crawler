@@ -10,7 +10,7 @@ fi
 
 wget https://dl-ssl.google.com/linux/linux_signing_key.pub && apt-key add linux_signing_key.pub
 
-apt-get update && apt-get install google-chrome-stable xvfb python-minimal
+apt-get update && apt-get install -y google-chrome-stable xvfb python-minimal
 
 if [ -z "$(which chromedriver)" ]; then 
     wget https://chromedriver.storage.googleapis.com/101.0.4951.41/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && \
