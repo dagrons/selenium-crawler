@@ -89,3 +89,4 @@ ENV/
 .ropeproject
 
 /download
+.DS_Store
